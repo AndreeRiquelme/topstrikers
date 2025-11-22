@@ -1,0 +1,76 @@
+body {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0px;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  color: #3E3A38;
+  background: #CFC3BB;
+}
+
+/* Columna izquierda (texto + leyenda) */
+#columna-izquierda {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 0 400px; /* ancho fijo para toda la columna */
+}
+
+/* Leyenda */
+#leyenda {
+  width: 100%; /* ocupa todo el ancho de la columna */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px; /* separación del texto */
+}
+
+/* Gráfico principal (columna derecha) */
+#chart {
+  flex: 0 0 1350px; /* ancho fijo del gráfico */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 1100px;            /* ajusta a la altura que deseas */
+  overflow-y: auto;         /* activa el scroll vertical */
+}
+
+
+.outer-margin {
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+#intro {
+	margin-top: 25px;
+}
+
+#intro h1 {
+	font-family: 'BBH Sans Hegarty', sans-serif; 
+	font-weight: 400;
+	font-size: 5em;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#intro h2 {
+	font-family: 'BBH Sans Hegarty', sans-serif; 
+	font-weight: 400;
+	font-size: 32px;
+	margin-top: 20;
+	margin-bottom: 0;
+}
+
+#intro p {
+	font-family: "Inter", cursive, sans-serif;
+	font-weight: 400; 
+	max-width: 500px;
+	font-size: 18px;
+	text-align: justify;
+	margin-top: 0;
+}
+
+

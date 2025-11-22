@@ -1,0 +1,2 @@
+cd "C:\Users\Alessandro\Desktop\Viztinc\Viztinc\1.TOPSTRIKERS"
+python -m http.server 8000

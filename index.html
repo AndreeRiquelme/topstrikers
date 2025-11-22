@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Styling -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Hegarty&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto&display=swap" rel="stylesheet">
+
+  <!-- D3 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- html-to-image -->
+  <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+
+  <style>
+    .title {
+      line-height: 0.80;
+    }
+
+    #saveBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 18px;
+      background-color: #222;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      z-index: 1000;
+    }
+
+    #saveBtn:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+  <!-- Columna izquierda -->
+  <div id="columna-izquierda">
+    <div id="intro" class="outer-margin">
+      <h1 class="title">The BEST STRIKERS</h1>
+      <p>
+        Strikers play one of the most crucial roles in football. They're the ones who score the goals, and ultimately, who win the matches.<br><br>
+        So it's only logical to think that the strongest national teams also have the best strikers.<br><br>
+        Let's take a look at the <span style="font-weight: 900;">TOP 50 NATIONAL TEAMS</span> in the <span style="font-weight: 900;">FIFA WORLD RANKING</span> and the strikers who represent them.
+      </p>
+      <h2 class="title">How to read<br>THE BEST STRIKERS</h2>
+      <p>
+        Each <svg width="16" height="16" style="vertical-align: middle;">
+          <circle cx="8" cy="8" r="8" fill="#3E3A38" />
+        </svg>
+        represents a striker and graphic details displays key information about their performance and career.
+      </p>
+    </div>
+
+    <label style="display: none;">
+      <input type="checkbox" id="filterEng" id="filterEng" />
+    </label>
+    <label style="display: none;">
+      <input type="checkbox" id="filterSpa" id="filterEng" />
+    </label>
+    <label style="display: none;">
+      <input type="checkbox" id="filterIta" id="filterEng" />
+    </label>
+    <label style="display: none;">
+      <input type="checkbox" id="filterGer" id="filterEng" />
+    </label>
+    <label style="display: none;">
+      <input type="checkbox" id="filterFra" id="filterEng" />
+    </label>
+    <label style="display: none;">
+      <input type="checkbox" id="filterClub" id="filterClub" />
+    </label>
+    <label style="display: none;">
+      <input type="checkbox" id="filterNT" id="filterNT" />
+    </label>
+    <label style="display: none;">
+      <input type="checkbox" id="filterBoth" id="filterBoth" />
+    </label>
+    </label>
+    <label style="display: none;">
+      <input type="checkbox" id="filterSolo" id="filterSolo" />
+    </label>
+    <label style="display: none;">
+      <input type="checkbox" id="filterSolo2" id="filterSolo2" />
+    </label>
+
+    <div id="leyenda"></div>
+    <script src="js/leyenda.js"></script>
+  </div>
+
+  <!-- Columna derecha -->
+  <div id="chart"></div>
+  <script src="js/main.js"></script>
+
+  <!-- Botón de descarga -->
+  <button id="saveBtn">D</button>
+
+<script>
+  document.getElementById("saveBtn").addEventListener("click", async () => {
+    // Esperar a que las fuentes de Google estén completamente cargadas
+    await document.fonts.ready;
+
+    // Inyectar el @import de fuentes directamente en el DOM
+    const styleTag = document.createElement('style');
+    styleTag.textContent = `
+      @import url('https://fonts.googleapis.com/css2?family=BBH+Sans+Hegarty&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto&display=swap');
+    `;
+    document.head.appendChild(styleTag);
+
+    // Capturar directamente lo que el usuario está viendo
+    htmlToImage.toPng(document.body, {
+      quality: 1,
+      pixelRatio: 5, // alta resolución
+      backgroundColor: getComputedStyle(document.body).backgroundColor || "white",
+      cacheBust: true,
+    })
+    .then((dataUrl) => {
+      const link = document.createElement('a');
+      link.download = 'visualizacion.png';
+      link.href = dataUrl;
+      link.click();
+    })
+    .catch((err) => {
+      console.error('Error al generar la imagen:', err);
+    });
+  });
+</script>
+
+</body>
+</html>
