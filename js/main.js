@@ -543,7 +543,7 @@ if (d.marked >= 1) {
       .attr("font-weight", "300")
       .attr("fill", "#6C6460")
       .attr("opacity", 0)
-      .text(`${d.goals} G`)
+      .text(`${Math.round(d.goals)} G`)
       .transition()
       .delay(4500)
       .duration(2000)
